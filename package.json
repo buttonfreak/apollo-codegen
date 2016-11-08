@@ -8,7 +8,8 @@
     "compile": "babel src --out-dir lib --source-maps",
     "watch": "babel src --out-dir lib --watch --source-maps",
     "prepublish": "rm -rf lib && npm run compile",
-    "test": "mocha --recursive --compilers js:babel-register"
+    "test": "mocha --recursive --compilers js:babel-register",
+    "example" : "npm run compile &&  lib/cli.js generate examples/*.graphql --schema examples/schema.json --output examples/example.java" 
   },
   "repository": {
     "type": "git",
