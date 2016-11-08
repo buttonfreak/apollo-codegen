@@ -5,6 +5,7 @@ import { loadSchema,  loadAndMergeQueryDocuments } from './loading'
 import { validateQueryDocument } from './validation'
 import { compileToIR, stringifyIR } from './compilation'
 import { generateSource } from './swift'
+import { generateJavaSource } from './java'
 
 export default function generate(inputPaths, schemaPath, outputPath, target, options) {
   const schema = loadSchema(schemaPath);
@@ -21,6 +22,9 @@ export default function generate(inputPaths, schemaPath, outputPath, target, opt
     case 'json':
       output = generateIR(context);
       break;
+    case 'java':
+        output = generateJavaSource(context);
+        break;
     default:
       output = generateSource(context);
       break;
